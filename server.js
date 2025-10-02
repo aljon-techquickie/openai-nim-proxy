@@ -39,10 +39,10 @@ app.post('/v1/chat/completions', async (req, res) => {
   try {
     const { model, messages, temperature, max_tokens, stream } = req.body;
     
-    const nimModel = MODEL_MAPPING[model] || MODEL_MAPPING['deepseek-ai/deepseek-r1-0528'];
+    const nimModel = MODEL_MAPPING[model] || MODEL_MAPPING['gpt-3.5-turbo'];
     
     const nimRequest = {
-      model: nimModel,
+      model: nimModel || 'deepseek-ai/deepseek-r1-0528',
       messages: messages,
       temperature: temperature || 0.9,
       max_tokens: max_tokens || 0,
